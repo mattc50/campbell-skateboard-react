@@ -122,44 +122,50 @@ function App () {
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Primary</label>
-            <input id="color-primary" class="color" type="color" value={primary} onChange={handlePrimary}></input>
+            <p class="hex">{primary}</p> 
           </div>
-          <p class="hex">{primary}</p>
+          <input id="color-primary" class="color" type="color" value={primary} onChange={handlePrimary}></input>
+          
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Secondary</label>
-            <input id="color-secondary" class="color" type="color" value={secondary} onChange={handleSecondary}></input>
+            <p class="hex">{secondary}</p>
           </div>
-          <p class="hex">{secondary}</p>
+          <input id="color-secondary" class="color" type="color" value={secondary} onChange={handleSecondary}></input>
+         
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Name</label>
-            <input id="color-name" class="color" type="color" value={name} onChange={handleName}></input>
+            <p class="hex">{name}</p>
           </div>
-          <p class="hex">{name}</p>
+          <input id="color-name" class="color" type="color" value={name} onChange={handleName}></input>
+          
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Seal</label>
-            <input id="color-seal" class="color" type="color" value={seal} onChange={handleSeal}></input>
+            <p class="hex">{seal}</p>
           </div>
-          <p class="hex">{seal}</p>
+          <input id="color-seal" class="color" type="color" value={seal} onChange={handleSeal}></input>
+          
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Linework</label>
-            <input id="color-linework" class="color" type="color" value={linework} onChange={handleLinework}></input>
+            <p class="hex">{linework}</p>
           </div>
-          <p class="hex">{linework}</p>
+          <input id="color-linework" class="color" type="color" value={linework} onChange={handleLinework}></input>
+          
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Board</label>
-            <input id="color-board" class="color" type="color" value={board} onChange={handleBoard}></input>
+            <p class="hex">{board}</p>
           </div>
-          <p class="hex">{board}</p>
+          <input id="color-board" class="color" type="color" value={board} onChange={handleBoard}></input>
+          
         </div>
         {/*<div className="save-btn-container" onclick="screenshot()">
           <label className="save-btn">Save</label>

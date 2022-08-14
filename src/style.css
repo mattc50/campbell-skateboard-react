@@ -68,6 +68,8 @@ img, svg {
 .linework{fill:#010101;}
 
 .label-input-container {
+  display: flex;
+  justify-content: space-between;
   margin: 5px 0;
   padding: 5px;
   border-radius: 4px;
@@ -75,9 +77,10 @@ img, svg {
 }
 
 .label-input {
-  width: 160px;
+  width: 110px;
   height: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: top;
 }
@@ -90,7 +93,8 @@ p {
 
 .color {
   cursor: pointer;
-  height: 100%;
+  height: 50px;
+  width: 50px;
   border: none;
   background-color: transparent;
 }
