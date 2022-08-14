@@ -67,22 +67,37 @@ img, svg {
 
 .linework{fill:#010101;}
 
-/*.colors {
-  display: flex;
-  position: fixed;
-  bottom: 2em;
-  right: 2em;
+.label-input-container {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(0,0,0,0.15);
 }
-  
+
+.label-input {
+  width: 160px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+p {
+  color: grey;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
 .color {
-  height: 36px;
-  width: 36px;
-  margin-left: 0.5em;
-  border-radius: 18px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-  border: 2px solid #aaa;
   cursor: pointer;
-}*/
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.color:focus, .color:active {
+  background-color: buttonface;
+}
 
 .color-container {
   width: 50%;
@@ -113,7 +128,7 @@ img, svg {
 
 label {
   display: block;
-  padding-bottom: 4px;
+  padding: 6px 8px 0 0;
   font-family: Arial, Helvetica, sans-serif
 }
 

@@ -1,15 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import './style.css';
-import './script';
-import './jscolor';
-import {SketchPicker} from "react-color";
-import useScript from './hooks/useScript';
+//import {SketchPicker} from "react-color";
 import { useState } from "react";
 import skateboardImg from './images/campbell_skateboard_bg.png'; 
 
 function App () {
-  const [sketchPickerColor, setSketchPickerColor] = useState("#37d67a");
+  //const [sketchPickerColor, setSketchPickerColor] = useState("#37d67a");
 
   {/*function changeColor(element, color) {
     const els = document.querySelectorAll(element);
@@ -26,8 +23,8 @@ function App () {
   let [linework, setLinework] = useState('#010101');
 
   function changeStyles(cls, val) {
-    const els = document.querySelectorAll(cls);
-
+    const clsName = "." + cls;
+    const els = document.querySelectorAll(clsName);
     els.forEach(el => {
       el.style.fill = val;
     });
@@ -36,37 +33,37 @@ function App () {
   function handleBoard(e) {
     let thisValue = e.target.value;
     setBoard(e.target.value);
-    changeStyles(".board", thisValue);
+    changeStyles("board", thisValue);
   }
 
   function handlePrimary(e) {
     let thisValue = e.target.value;
     setPrimary(e.target.value);
-    changeStyles(".primary", thisValue);
+    changeStyles("primary", thisValue);
   }
 
   function handleSeal(e) {
     let thisValue = e.target.value;
     setSeal(e.target.value);
-    changeStyles(".seal", thisValue);
+    changeStyles("seal", thisValue);
   }
 
   function handleSecondary(e) {
     let thisValue = e.target.value;
     setSecondary(e.target.value);
-    changeStyles(".secondary", thisValue);
+    changeStyles("secondary", thisValue);
   }
 
   function handleName(e) {
     let thisValue = e.target.value;
     setName(e.target.value);
-    changeStyles(".name", thisValue);
+    changeStyles("name", thisValue);
   }
 
   function handleLinework(e) {
     let thisValue = e.target.value;
     setLinework(e.target.value);
-    changeStyles(".linework", thisValue);
+    changeStyles("linework", thisValue);
   }
 
   return (
@@ -78,7 +75,7 @@ function App () {
         <img id="background-image" src={skateboardImg} alt=""/>
           <div className="editable">
             <div className="container">
-              <svg className="can_board" id="board" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1061 1061"><defs></defs><path fill={sketchPickerColor} className="board" d="M644.32,524.17c0,98.24,.15,196.48-.19,294.72-.04,12.64-2.45,25.3-4.17,37.9-1.5,10.99-3.46,21.9-6.51,32.61-3.17,11.13-9.08,20.87-14.61,30.85-5.58,10.08-12.55,19.1-21,26.87-15.05,13.84-32.73,22.22-53.08,25.02-19.5,2.68-38.45,.88-56.45-7.13-9.35-4.17-17.75-10.16-25.45-17.01-13.83-12.32-22.72-27.7-29.32-44.9-9.78-25.5-13.01-51.8-13.22-78.92-.18-23.6-1.05-47.22-.53-70.81,.45-20.51,.7-41.02,.71-61.53,.03-62.22-.09-124.44,.17-186.66,.04-9.18,.33-18.43,.59-27.62,.31-11.46,1.3-23.02-.25-34.6-.53-3.99,.7-8.52,.59-12.82-1.77-66-.95-132.01-.78-198.01,.06-21.05,1.81-42.08,7.61-62.53,5.02-17.68,13.53-33.38,25.71-47.21,13.59-15.42,29.95-26.07,50.13-30.52,16.2-3.57,32.33-1.88,48.43,.87,17.73,3.03,33.64,10.26,47.18,21.98,16.56,14.33,27.31,32.58,34.13,53.33,4.84,14.72,7.02,29.78,8.54,45.17,3.74,38.03,1.34,76.1,1.65,114.15,.53,65.6,.15,131.21,.15,196.81h-.03Zm-109.07,184.26c8.06-.52,15.99,.19,23.97-.96,13.16-1.9,26.51-3.07,38.84-8.31,10.53-4.47,21.44-8.56,29.11-17.96,3.81-4.67,4.02-6.05,.16-10.42-1.63-1.85-4.58-3.71-3-6.63,1.16-2.14,1.05-4.13,1.04-6.23-.06-41.81,.22-83.62-.93-125.43-.56-20.24-.06-40.5-.05-60.75,.01-18.65,.04-37.29-.02-55.94,0-2.73,.82-4.81,2.3-7.25,6.27-10.33,6.59-16.06-1.95-23.01-2.73-2.23-6.62-2.22-9.23-4.77-3.82-3.73-8.77-4.76-13.73-4.54-2.7,.12-5.06-.33-7.09-1.57-9.81-6.01-21.07-5.31-31.69-5.98-3.98-.25-8.48-.17-12.74-.26-1.4-.03-2.39-1.91-4.12-.86-4.65,2.84-9.95-3.08-14.57,1.02-.18,.16-1.22-.17-1.29-.43-.68-2.55-2.79-1.59-4.14-1.43-6.78,.78-13.58,.27-20.4,.79-15.26,1.15-30.15,2.79-44.91,7.46-7.02,2.22-13.57,4.63-19.83,8.37-10.27,6.14-12.19,13.61-5.62,23.52,.92,1.39,2.33,2.73,2.05,4.42-1.66,9.93,0,19.84-.11,29.73-.26,22.21,1.46,44.35,1.39,66.55-.04,13.07-.58,26.13,.9,39.3,1.07,9.52-.07,19.44-.06,29.19,.02,27.8-.04,55.6,.04,83.4,.01,3.44-.68,6.49-2.28,9.51-2.8,5.29-1.75,11.08,2.27,15.53,7.35,8.14,16.75,12.83,27.01,15.83,22.45,6.56,45.54,7.98,68.65,8.1Zm18.33-362.76c2.7-.01,3.97-1.17,3.95-3.59-.02-2.51-1.45-3.4-3.79-3.4-2.49,0-3.71,1.62-3.81,3.65-.12,2.4,1.78,3.23,3.65,3.33Zm-.28-61.07c1.54-.87,4.39-.29,4.02-3.31-.27-2.23-1.79-3.59-4.11-3.45-2.17,.12-3.87,1.05-3.74,3.65,.12,2.39,1.89,2.81,3.82,3.12Zm-42.7-5.33c.14-1.92-2.21-1.58-3.86-1.87-2.34-.41-3.46,1.16-3.54,3.15-.11,2.63,1.79,3.2,4.02,3.13,2.24-.07,3.3-1.27,3.38-4.41Zm-2.86,60.42c-2.04-.08-3.76,.39-3.61,2.87,.12,2.03,1.08,3.24,3.48,3.18,2.24-.06,3.5-1,3.7-3.07,.23-2.49-1.59-2.92-3.56-2.97Zm5.65,459.52c-.13-2.15-1.79-2.58-3.38-2.84-1.81-.29-3.56,.55-3.79,2.28-.25,1.87,.94,3.48,3.15,3.55,2.04,.07,3.27-1.17,4.02-2.99Zm-3.8-56.88c1.92-.23,2.96-1.34,2.89-3.27-.08-2.07-1.51-2.94-3.35-2.68-1.53,.22-3.62,.53-3.39,2.74,.21,1.99,1.78,3.01,3.84,3.21Zm48.8-3.22c-.36-1.95-1.84-2.76-3.56-2.65-1.62,.11-3.41,.72-3.28,2.93,.13,2.09,1.83,2.76,3.51,2.72,1.69-.04,3.22-.83,3.33-3Zm-3.31,57.21c-1.66,.28-3.1,1.22-3.35,2.99-.31,2.23,1.66,2.66,3.26,2.85,1.82,.22,3.32-.52,3.43-2.64,.12-2.17-1.55-2.66-3.35-3.2Z"/></svg>
+              <svg className="can_board" id="board" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1061 1061"><defs></defs><path className="board" d="M644.32,524.17c0,98.24,.15,196.48-.19,294.72-.04,12.64-2.45,25.3-4.17,37.9-1.5,10.99-3.46,21.9-6.51,32.61-3.17,11.13-9.08,20.87-14.61,30.85-5.58,10.08-12.55,19.1-21,26.87-15.05,13.84-32.73,22.22-53.08,25.02-19.5,2.68-38.45,.88-56.45-7.13-9.35-4.17-17.75-10.16-25.45-17.01-13.83-12.32-22.72-27.7-29.32-44.9-9.78-25.5-13.01-51.8-13.22-78.92-.18-23.6-1.05-47.22-.53-70.81,.45-20.51,.7-41.02,.71-61.53,.03-62.22-.09-124.44,.17-186.66,.04-9.18,.33-18.43,.59-27.62,.31-11.46,1.3-23.02-.25-34.6-.53-3.99,.7-8.52,.59-12.82-1.77-66-.95-132.01-.78-198.01,.06-21.05,1.81-42.08,7.61-62.53,5.02-17.68,13.53-33.38,25.71-47.21,13.59-15.42,29.95-26.07,50.13-30.52,16.2-3.57,32.33-1.88,48.43,.87,17.73,3.03,33.64,10.26,47.18,21.98,16.56,14.33,27.31,32.58,34.13,53.33,4.84,14.72,7.02,29.78,8.54,45.17,3.74,38.03,1.34,76.1,1.65,114.15,.53,65.6,.15,131.21,.15,196.81h-.03Zm-109.07,184.26c8.06-.52,15.99,.19,23.97-.96,13.16-1.9,26.51-3.07,38.84-8.31,10.53-4.47,21.44-8.56,29.11-17.96,3.81-4.67,4.02-6.05,.16-10.42-1.63-1.85-4.58-3.71-3-6.63,1.16-2.14,1.05-4.13,1.04-6.23-.06-41.81,.22-83.62-.93-125.43-.56-20.24-.06-40.5-.05-60.75,.01-18.65,.04-37.29-.02-55.94,0-2.73,.82-4.81,2.3-7.25,6.27-10.33,6.59-16.06-1.95-23.01-2.73-2.23-6.62-2.22-9.23-4.77-3.82-3.73-8.77-4.76-13.73-4.54-2.7,.12-5.06-.33-7.09-1.57-9.81-6.01-21.07-5.31-31.69-5.98-3.98-.25-8.48-.17-12.74-.26-1.4-.03-2.39-1.91-4.12-.86-4.65,2.84-9.95-3.08-14.57,1.02-.18,.16-1.22-.17-1.29-.43-.68-2.55-2.79-1.59-4.14-1.43-6.78,.78-13.58,.27-20.4,.79-15.26,1.15-30.15,2.79-44.91,7.46-7.02,2.22-13.57,4.63-19.83,8.37-10.27,6.14-12.19,13.61-5.62,23.52,.92,1.39,2.33,2.73,2.05,4.42-1.66,9.93,0,19.84-.11,29.73-.26,22.21,1.46,44.35,1.39,66.55-.04,13.07-.58,26.13,.9,39.3,1.07,9.52-.07,19.44-.06,29.19,.02,27.8-.04,55.6,.04,83.4,.01,3.44-.68,6.49-2.28,9.51-2.8,5.29-1.75,11.08,2.27,15.53,7.35,8.14,16.75,12.83,27.01,15.83,22.45,6.56,45.54,7.98,68.65,8.1Zm18.33-362.76c2.7-.01,3.97-1.17,3.95-3.59-.02-2.51-1.45-3.4-3.79-3.4-2.49,0-3.71,1.62-3.81,3.65-.12,2.4,1.78,3.23,3.65,3.33Zm-.28-61.07c1.54-.87,4.39-.29,4.02-3.31-.27-2.23-1.79-3.59-4.11-3.45-2.17,.12-3.87,1.05-3.74,3.65,.12,2.39,1.89,2.81,3.82,3.12Zm-42.7-5.33c.14-1.92-2.21-1.58-3.86-1.87-2.34-.41-3.46,1.16-3.54,3.15-.11,2.63,1.79,3.2,4.02,3.13,2.24-.07,3.3-1.27,3.38-4.41Zm-2.86,60.42c-2.04-.08-3.76,.39-3.61,2.87,.12,2.03,1.08,3.24,3.48,3.18,2.24-.06,3.5-1,3.7-3.07,.23-2.49-1.59-2.92-3.56-2.97Zm5.65,459.52c-.13-2.15-1.79-2.58-3.38-2.84-1.81-.29-3.56,.55-3.79,2.28-.25,1.87,.94,3.48,3.15,3.55,2.04,.07,3.27-1.17,4.02-2.99Zm-3.8-56.88c1.92-.23,2.96-1.34,2.89-3.27-.08-2.07-1.51-2.94-3.35-2.68-1.53,.22-3.62,.53-3.39,2.74,.21,1.99,1.78,3.01,3.84,3.21Zm48.8-3.22c-.36-1.95-1.84-2.76-3.56-2.65-1.62,.11-3.41,.72-3.28,2.93,.13,2.09,1.83,2.76,3.51,2.72,1.69-.04,3.22-.83,3.33-3Zm-3.31,57.21c-1.66,.28-3.1,1.22-3.35,2.99-.31,2.23,1.66,2.66,3.26,2.85,1.82,.22,3.32-.52,3.43-2.64,.12-2.17-1.55-2.66-3.35-3.2Z"/></svg>
             </div>
             <div className="container">
               <svg className="can" id="can_primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1061 1061"><defs></defs><path className="primary" d="M623.26,541.03c1.79,1.49,1.41,3.42,1.4,5.19-.07,34.11-.24,68.22-.18,102.33,0,4.03-1.02,7.83-1.31,11.77-.34,4.56,2.85,8.18,2.35,12.87-.53,5-2.15,8.67-6.34,11.57-16.69,11.58-35.64,16.67-55.38,19.16-18.17,2.29-36.52,2.3-54.69,.74-15.04-1.29-30.25-3.35-44.45-8.92-9.65-3.79-22.64-7.1-27.3-17.57-1.76-3.96-.23-8.71,2.57-11.76,.89-.97,2.19-3.77,1.84-4.82-2.3-6.85,2.96-10.52-.43-17.72-1.77-3.75-.12-10.74,.43-15.45,.91-7.78,.17-13.51-.85-21.26-.88-6.7,1.05-15.33,.57-22.11-.82-11.53-1.43-22.12-.85-33.73,.09-1.73-2.25-6.27,.57-7.37,16.65,12.73,37.93,18.71,58.52,21.26,4.57,13.48,13.95,22.22,26.91,27.46,1.21,.49,2.13-.09,3.25-.4,8.8-2.4,15.52-8.56,23.3-12.78,1.74-.94,2.74-2.69,3.32-4.77,3.47-14.84,4.69-9.4,13.08-10.79,18.45-3.06,35.03-9.69,49.49-22.25,.85-.74,2.48-.88,4.18-.67Z"/><path className="primary" d="M563.61,430.06c-6.43,.68-13.5,1.02-20.39,2.33-3.01,.57-6.36,.48-8.77,.19-4.56-.56-8.76,.84-13.07,.55-6.22-.41-12.59-.58-18.59-2.05-11.19-2.75-22.65-4.31-33.65-7.84-9.96-3.2-19.68-6.9-28.66-12.37-7.43-4.53-11.04-14.46-5.87-21.23,1.38-1.81,5.5-4.33,7.75-5.26,16.12-6.65,32.22-10.94,49.6-13.1,18.1-2.25,36.78-3.38,55-3.64,13.59-.19,28.05-.11,41.09,3.14,11.75,2.92,23.37,4.23,33.95,11.44,4.33,4.76,9.66,6.08,9.27,13.63-.38,7.36-3.9,10.78-8.92,16.82-12.9,7.79-27.15,11.45-41.67,14.35-5.48,1.09-10.65,3.85-17.05,3.06Z"/></svg>
@@ -99,14 +96,6 @@ function App () {
       </div>
     </div>
 
-    {/*<div className="colors">
-      <div className="color" style="background-color: #e1e851" data-hex="#e1e851"></div>
-      <div className="color" style="background-color: #8cd147" data-hex="#8cd147"></div>
-      <div className="color" style="background-color: #4a9ccf" data-hex="#4a9ccf"></div>
-      <div className="color" style="background-color: #661f45" data-hex="#661f45"></div>
-      <div className="color" style="background-color: #1e2024" data-hex="#1e2024"></div>
-      </div>*/}
-
     <div className="color-container">
       <div className="color-inputs">
         {/*<div
@@ -123,15 +112,48 @@ function App () {
             changeColor('.board', setSketchPickerColor(color.hex));
           }}
         />*/}
-        <div class="label-input">
-          <label class="color-label">Primary</label>
-          <input type="color" value={primary} onChange={handlePrimary}></input>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Primary</label>
+            <input class="color" type="color" value={primary} onChange={handlePrimary}></input>
+          </div>
+          <p class="hex">{primary}</p>
         </div>
-        <input type="color" value={secondary} onChange={handleSecondary}></input>
-        <input type="color" value={name} onChange={handleName}></input>
-        <input type="color" value={seal} onChange={handleSeal}></input>
-        <input type="color" value={linework} onChange={handleLinework}></input>
-        <input type="color" value={board} onChange={handleBoard}></input>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Secondary</label>
+            <input class="color" type="color" value={secondary} onChange={handleSecondary}></input>
+          </div>
+          <p class="hex">{secondary}</p>
+        </div>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Name</label>
+            <input class="color" type="color" value={name} onChange={handleName}></input>
+          </div>
+          <p class="hex">{name}</p>
+        </div>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Seal</label>
+            <input class="color" type="color" value={seal} onChange={handleSeal}></input>
+          </div>
+          <p class="hex">{seal}</p>
+        </div>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Linework</label>
+            <input class="color" type="color" value={linework} onChange={handleLinework}></input>
+          </div>
+          <p class="hex">{linework}</p>
+        </div>
+        <div class="label-input-container">
+          <div class="label-input">
+            <label class="color-label">Board</label>
+            <input class="color" type="color" value={board} onChange={handleBoard}></input>
+          </div>
+          <p class="hex">{board}</p>
+        </div>
         {/*<div className="save-btn-container" onclick="screenshot()">
           <label className="save-btn">Save</label>
       </div>*/}
