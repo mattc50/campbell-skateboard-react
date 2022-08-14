@@ -15,6 +15,7 @@ function App () {
       el.style.fill = color;
     });
   }*/}
+
   let [board, setBoard] = useState('#adcdd8');
   let [primary, setPrimary] = useState('#f8371e');
   let [seal, setSeal] = useState('#a8c8d5');
@@ -28,6 +29,12 @@ function App () {
     els.forEach(el => {
       el.style.fill = val;
     });
+  }
+
+  function reset () {
+    /*const el = document.getElementById("color-primary");
+    el.setAttribute("value", "#adcdd8");*/
+    window.location.reload(false);
   }
 
   function handleBoard(e) {
@@ -115,48 +122,49 @@ function App () {
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Primary</label>
-            <input class="color" type="color" value={primary} onChange={handlePrimary}></input>
+            <input id="color-primary" class="color" type="color" value={primary} onChange={handlePrimary}></input>
           </div>
           <p class="hex">{primary}</p>
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Secondary</label>
-            <input class="color" type="color" value={secondary} onChange={handleSecondary}></input>
+            <input id="color-secondary" class="color" type="color" value={secondary} onChange={handleSecondary}></input>
           </div>
           <p class="hex">{secondary}</p>
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Name</label>
-            <input class="color" type="color" value={name} onChange={handleName}></input>
+            <input id="color-name" class="color" type="color" value={name} onChange={handleName}></input>
           </div>
           <p class="hex">{name}</p>
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Seal</label>
-            <input class="color" type="color" value={seal} onChange={handleSeal}></input>
+            <input id="color-seal" class="color" type="color" value={seal} onChange={handleSeal}></input>
           </div>
           <p class="hex">{seal}</p>
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Linework</label>
-            <input class="color" type="color" value={linework} onChange={handleLinework}></input>
+            <input id="color-linework" class="color" type="color" value={linework} onChange={handleLinework}></input>
           </div>
           <p class="hex">{linework}</p>
         </div>
         <div class="label-input-container">
           <div class="label-input">
             <label class="color-label">Board</label>
-            <input class="color" type="color" value={board} onChange={handleBoard}></input>
+            <input id="color-board" class="color" type="color" value={board} onChange={handleBoard}></input>
           </div>
           <p class="hex">{board}</p>
         </div>
         {/*<div className="save-btn-container" onclick="screenshot()">
           <label className="save-btn">Save</label>
       </div>*/}
+      <button class="reset" onClick={reset}>Reset</button>
       </div>
     </div>
 

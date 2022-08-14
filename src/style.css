@@ -132,15 +132,30 @@ label {
   font-family: Arial, Helvetica, sans-serif
 }
 
-.save-btn {
+.btn {
   width: 100%;
   min-width: 125px;
   padding: 8px;
   cursor: pointer;
 }
 
-.save-btn:hover {
+.btn:hover {
   background-color: skyblue;
+  transition: 0.2s;
+}
+
+button {
+  height: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(22, 190, 58);
+  color: white;
   transition: 0.2s;
 }
 
