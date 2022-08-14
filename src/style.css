@@ -8,12 +8,12 @@ img, svg {
   vertical-align: bottom;
 }
 
-main {
+.content {
     display: flex;
     justify-content: space-around;
 }
 
-.edtibale {
+.editable {
   position: absolute;
   top: 0;
   left: 0;
@@ -96,6 +96,10 @@ main {
   flex-direction: column;
   bottom: 2em;
   right: 2em;
+}
+
+.color-inputs img {
+  display: none;
 }
 
 .color-input, .save-btn {
