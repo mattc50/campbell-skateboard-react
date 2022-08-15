@@ -55,7 +55,7 @@ img, svg {
     mix-blend-mode: multiply;
 }
 
-.board{fill:#adcdd8;}
+/*.board{fill:#adcdd8;}
 
 .primary{fill:#f8371e;}
 
@@ -65,7 +65,7 @@ img, svg {
 
 .name{fill:#fefeca;}
 
-.linework{fill:#010101;}
+.linework{fill:#010101;}*/
 
 .label-input-container {
   display: flex;
