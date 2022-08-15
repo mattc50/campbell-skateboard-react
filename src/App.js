@@ -8,39 +8,10 @@ import skateboardImg from './images/campbell_skateboard_bg.png';
 let count = 0;
 
 function App () {
-  count++;
-  //console.log("rendered" + count);
+  /*count++;
+  console.log("rendered" + count);*/
 
   //const [sketchPickerColor, setSketchPickerColor] = useState("#37d67a");
-
-  {/*function changeColor(element, color) {
-    const els = document.querySelectorAll(element);
-
-    els.forEach(el => {
-      el.style.fill = color;
-    });
-  }*/}
-
-  /*localStorage.setItem('board-color', '#adcdd8');
-  localStorage.setItem('primary-color', '#f8371e');
-  localStorage.setItem('seal-color', '#a8c8d5');
-  localStorage.setItem('secondary-color', '#518824');
-  localStorage.setItem('name-color', '#fefeca');
-  localStorage.setItem('linework-color', '#010101');*/
-  
-  /*let [board, setBoard] = useState('#adcdd8');
-  let [primary, setPrimary] = useState('#f8371e');
-  let [seal, setSeal] = useState('#a8c8d5');
-  let [secondary, setSecondary] = useState('#518824');
-  let [name, setName] = useState('#fefeca');
-  let [linework, setLinework] = useState('#010101');*/
-
-  /*setBoard(localStorage.getItem('board-color'));
-  setPrimary(localStorage.getItem('primary-color'));
-  setSeal(localStorage.getItem('seal-color'));
-  setSecondary(localStorage.getItem('secondary-color'));
-  setName(localStorage.getItem('name-color'));
-  setLinework(localStorage.getItem('linework-color'));*/
 
   let initBoard = localStorage.getItem('board-color') === null ? '#adcdd8' : localStorage.getItem('board-color');
   let initPrimary = localStorage.getItem('primary-color') === null ? '#f8371e' : localStorage.getItem('primary-color');
@@ -55,12 +26,11 @@ function App () {
   let [secondary, setSecondary] = useState(initSecondary);
   let [name, setName] = useState(initName);
   let [linework, setLinework] = useState(initLinework);
-  console.log(localStorage.getItem('primary-color'));
-  
-  const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
-  
-  
 
+  const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
+  const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
+  const elementColors = ['#adcdd8', '#f8371e', '#a8c8d5', '#518824', '#fefeca', '#010101']
+  
   /*useEffect(() => {
     localStorage.setItem('board-color', JSON.stringify(board));
   }, [board]);
@@ -71,6 +41,25 @@ function App () {
     setBoard(board);
     }
   }, []);*/
+  function randomize() {
+    let newColors = [];
+    for(let i = 0; i < 6; i++) {
+      const randomColor = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+      newColors.push(randomColor);
+    }
+    setBoard(newColors[0]);
+    localStorage.setItem('board-color', newColors[0]);
+    setPrimary(newColors[1]);
+    localStorage.setItem('primary-color', newColors[1]);
+    setSeal(newColors[2]);
+    localStorage.setItem('seal-color', newColors[2]);
+    setSecondary(newColors[3]);
+    localStorage.setItem('secondary-color', newColors[3]);
+    setName(newColors[4]);
+    localStorage.setItem('name-color', newColors[4]);
+    setLinework(newColors[5]);
+    localStorage.setItem('linework-color', newColors[5]);
+  }
 
   function changeStyles(cls, val, storage) {
     const clsName = "." + cls;
@@ -82,18 +71,12 @@ function App () {
   }
 
   function reset () {
-    /*const el = document.getElementById("color-primary");
-    el.setAttribute("value", "#adcdd8");*/
     setBoard('#adcdd8');
     setPrimary('#f8371e');
     setSeal('#a8c8d5');
     setSecondary('#518824');
     setName('#fefeca');
     setLinework('#010101');
-    const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
-    const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
-    //const elementColors = [board, primary, seal, secondary, name, linework];
-    const elementColors = ['#adcdd8', '#f8371e', '#a8c8d5', '#518824', '#fefeca', '#010101']
     for(let i = 0; i < elementSections.length; i++) {
       let clsName = "." + elementSections[i];
       let els = document.querySelectorAll(clsName);
@@ -238,14 +221,14 @@ function App () {
         {/*<div className="save-btn-container" onclick="screenshot()">
           <label className="save-btn">Save</label>
       </div>*/}
+      <button className="randomize" onClick={randomize}>Randomize</button>
       <button className="reset" onClick={reset}>Reset</button>
+      
       </div>
     </div>
 
   </div>
   );
 }
-
-
 
 export default App;
