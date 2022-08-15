@@ -21,7 +21,6 @@ function App () {
     });
   }*/}
 
-  //let [board, setBoard] = useState('#adcdd8');
   /*localStorage.setItem('board-color', '#adcdd8');
   localStorage.setItem('primary-color', '#f8371e');
   localStorage.setItem('seal-color', '#a8c8d5');
@@ -42,13 +41,20 @@ function App () {
   setSecondary(localStorage.getItem('secondary-color'));
   setName(localStorage.getItem('name-color'));
   setLinework(localStorage.getItem('linework-color'));*/
+
+  let initBoard = localStorage.getItem('board-color') === null ? '#adcdd8' : localStorage.getItem('board-color');
+  let initPrimary = localStorage.getItem('primary-color') === null ? '#f8371e' : localStorage.getItem('primary-color');
+  let initSeal = localStorage.getItem('seal-color') === null ? '#a8c8d5' : localStorage.getItem('seal-color');
+  let initSecondary = localStorage.getItem('secondary-color') === null ? '#518824' : localStorage.getItem('secondary-color');
+  let initName = localStorage.getItem('name-color') === null ? '#fefeca' : localStorage.getItem('name-color');
+  let initLinework = localStorage.getItem('linework-color') === null ? '#010101' : localStorage.getItem('linework-color');
   
-  let [board, setBoard] = useState(localStorage.getItem('board-color'));
-  let [primary, setPrimary] = useState(localStorage.getItem('primary-color'));
-  let [seal, setSeal] = useState(localStorage.getItem('seal-color'));
-  let [secondary, setSecondary] = useState(localStorage.getItem('secondary-color'));
-  let [name, setName] = useState(localStorage.getItem('name-color'));
-  let [linework, setLinework] = useState(localStorage.getItem('linework-color'));
+  let [board, setBoard] = useState(initBoard);
+  let [primary, setPrimary] = useState(initPrimary);
+  let [seal, setSeal] = useState(initSeal);
+  let [secondary, setSecondary] = useState(initSecondary);
+  let [name, setName] = useState(initName);
+  let [linework, setLinework] = useState(initLinework);
   console.log(localStorage.getItem('primary-color'));
   
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
