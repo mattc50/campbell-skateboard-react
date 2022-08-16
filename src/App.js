@@ -13,6 +13,7 @@ function App () {
   console.log("rendered" + count);*/
 
   //const [sketchPickerColor, setSketchPickerColor] = useState("#37d67a");
+  
 
   let initBoard = localStorage.getItem('board-color') === null ? '#adcdd8' : localStorage.getItem('board-color');
   let initPrimary = localStorage.getItem('primary-color') === null ? '#f8371e' : localStorage.getItem('primary-color');
@@ -20,8 +21,13 @@ function App () {
   let initSecondary = localStorage.getItem('secondary-color') === null ? '#518824' : localStorage.getItem('secondary-color');
   let initName = localStorage.getItem('name-color') === null ? '#fefeca' : localStorage.getItem('name-color');
   let initLinework = localStorage.getItem('linework-color') === null ? '#010101' : localStorage.getItem('linework-color');
-  if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', '0');
+  
+  /*localStorage.removeItem('preset-count');
+  localStorage.removeItem('presets');*/
+
+  if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', 0);
   if (localStorage.getItem('presets') === null) localStorage.setItem('presets', null);
+
   
   let [board, setBoard] = useState(initBoard);
   let [primary, setPrimary] = useState(initPrimary);
@@ -45,27 +51,6 @@ function App () {
     setBoard(board);
     }
   }, []);*/
-
-  function save(brd, pri, sl, sec, nm, lnwk) {
-    let presetCount = localStorage.getItem('preset-count');
-    const presetName = 'preset' + presetCount;
-    let preset = {
-      [presetName]: 
-        { 
-          "board-color": brd, 
-          "primary-color": pri,
-          "seal-color": sl,
-          "secondary-color": sec,
-          "name-color": nm,
-          "linework-color": lnwk
-        }
-      
-    };
-    if(presetCount == 0) {
-      const stringified = JSON.stringify(preset);
-      localStorage.setItem('presets', stringified);
-    }
-  }
 
   function randomize() {
     let newColors = [];
@@ -250,9 +235,13 @@ function App () {
       <button className="randomize" onClick={randomize}>Randomize</button>
       <button className="open-modal" onClick={() => setIsOpen(true)}>Open Modal</button>
       {isOpen && <Modal 
-        primary={primary}
+        brd={board}
+        pri={primary}
+        sl={seal}
+        sec={secondary}
+        nm={name}
+        lnwk={linework}
         setIsOpen={setIsOpen} />}
-      <button className="save" onClick={save(board, primary, seal, secondary, name, linework)}>Save</button>
       <button className="reset" onClick={reset}>Reset</button>
       
       </div>

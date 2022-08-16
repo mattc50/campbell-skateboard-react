@@ -2,11 +2,11 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-*,
+/**,
 *:before,
 *:after {
   box-sizing: border-box;
-}
+}*/
 
 img, svg {
   vertical-align: bottom;
@@ -21,6 +21,27 @@ img, svg {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#form-name {
+  width: calc(100% - 8px);
+
+}
+
+.form-section {
+  position: relative;
+  margin: 15px 0;
+}
+
+.color-display-title, .swatch-label {
+  color: black;
+}
+
+.swatch {
+  width: 125px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .swatch-face {
