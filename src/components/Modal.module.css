@@ -134,3 +134,10 @@
     transform: none;
     background: whitesmoke;
   }
+
+  @media only screen and (max-width: 550px) {
+    .modal {
+      width: 80vw;
+      height: 40vh;
+    }
+  }

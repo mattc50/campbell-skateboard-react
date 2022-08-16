@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import './style.css';
 //import {SketchPicker} from "react-color";
-import Modal from "./components/Modal";
+import SaveModal from "./components/SaveModal";
+import ManageModal from "./components/ManageModal";
 import { useState, useEffect } from "react";
 import skateboardImg from './images/campbell_skateboard_bg.png'; 
 
@@ -233,14 +234,17 @@ function App () {
           <label className="save-btn">Save</label>
       </div>*/}
       <button className="randomize" onClick={randomize}>Randomize</button>
-      <button className="open-modal" onClick={() => setIsOpen(true)}>Open Modal</button>
-      {isOpen && <Modal 
+      <button className="open-modal" onClick={() => setIsOpen(true)}>Save Colors</button>
+      {isOpen && <SaveModal 
         brd={board}
         pri={primary}
         sl={seal}
         sec={secondary}
         nm={name}
         lnwk={linework}
+        setIsOpen={setIsOpen} />}
+      <button className="open-modal" onClick={() => setIsOpen(true)}>Presets</button>
+      {isOpen && <ManageModal 
         setIsOpen={setIsOpen} />}
       <button className="reset" onClick={reset}>Reset</button>
       
