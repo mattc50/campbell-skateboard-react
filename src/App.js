@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './style.css';
 //import {SketchPicker} from "react-color";
+import Modal from "./components/Modal";
 import { useState, useEffect } from "react";
 import skateboardImg from './images/campbell_skateboard_bg.png'; 
 
@@ -19,6 +20,8 @@ function App () {
   let initSecondary = localStorage.getItem('secondary-color') === null ? '#518824' : localStorage.getItem('secondary-color');
   let initName = localStorage.getItem('name-color') === null ? '#fefeca' : localStorage.getItem('name-color');
   let initLinework = localStorage.getItem('linework-color') === null ? '#010101' : localStorage.getItem('linework-color');
+  if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', '0');
+  if (localStorage.getItem('presets') === null) localStorage.setItem('presets', null);
   
   let [board, setBoard] = useState(initBoard);
   let [primary, setPrimary] = useState(initPrimary);
@@ -26,6 +29,7 @@ function App () {
   let [secondary, setSecondary] = useState(initSecondary);
   let [name, setName] = useState(initName);
   let [linework, setLinework] = useState(initLinework);
+  let [isOpen, setIsOpen] = useState(false);
 
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
   const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
@@ -41,6 +45,28 @@ function App () {
     setBoard(board);
     }
   }, []);*/
+
+  function save(brd, pri, sl, sec, nm, lnwk) {
+    let presetCount = localStorage.getItem('preset-count');
+    const presetName = 'preset' + presetCount;
+    let preset = {
+      [presetName]: 
+        { 
+          "board-color": brd, 
+          "primary-color": pri,
+          "seal-color": sl,
+          "secondary-color": sec,
+          "name-color": nm,
+          "linework-color": lnwk
+        }
+      
+    };
+    if(presetCount == 0) {
+      const stringified = JSON.stringify(preset);
+      localStorage.setItem('presets', stringified);
+    }
+  }
+
   function randomize() {
     let newColors = [];
     for(let i = 0; i < 6; i++) {
@@ -222,6 +248,11 @@ function App () {
           <label className="save-btn">Save</label>
       </div>*/}
       <button className="randomize" onClick={randomize}>Randomize</button>
+      <button className="open-modal" onClick={() => setIsOpen(true)}>Open Modal</button>
+      {isOpen && <Modal 
+        primary={primary}
+        setIsOpen={setIsOpen} />}
+      <button className="save" onClick={save(board, primary, seal, secondary, name, linework)}>Save</button>
       <button className="reset" onClick={reset}>Reset</button>
       
       </div>

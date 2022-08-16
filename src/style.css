@@ -1,3 +1,7 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 *,
 *:before,
 *:after {
@@ -17,6 +21,15 @@ img, svg {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.swatch-face {
+  height: 16px;
+  width: 16px;
+}
+
+.form-name {
+  color: black;
 }
 
 #background-image {
