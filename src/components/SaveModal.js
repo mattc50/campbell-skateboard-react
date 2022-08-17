@@ -3,7 +3,7 @@ import styles from "./Modal.module.css";
 import { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
-const Modal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
+const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
   let [formName, setFormName] = useState('');
 
   function handleInput (e) {
@@ -22,7 +22,6 @@ const Modal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
     const presetCount = localStorage.getItem('preset-count');
     if(nameEntry === ''  || nameEntry.trim() === '' ) {
       nameEntry = "Preset " + presetCount;
-      console.log(nameEntry);
     }
     setIsOpen(false);
     localStorage.getItem('preset-count');
@@ -114,7 +113,7 @@ const Modal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
                   </button>
                   <button type="submit" className={styles.saveFormBtn} 
                     onClick={handleSubmit}>
-                    Delete
+                    Save
                   </button>
                 </div>
               </div>
@@ -125,4 +124,4 @@ const Modal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
   );
 };
 
-export default Modal;
+export default SaveModal;

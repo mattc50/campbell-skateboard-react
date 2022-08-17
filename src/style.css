@@ -179,6 +179,15 @@ label {
   font-family: Arial, Helvetica, sans-serif
 }
 
+.presets {
+  overflow-y: auto;
+}
+
+.preset-container {
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
 .preset-body {
   display: flex;
   justify-content: space-between;
@@ -189,25 +198,34 @@ label {
   display: flex;
 }
 
-.icon-container * {
-  padding: 6px;
-  border-radius: 16px;
-  background-color: #f4f4f4;
-  margin: 0 5px;
+.load, .delete {
+  padding: 6px 8px;
+  border-radius: 22px;
+  margin: 0 4px;
   color: #616161;
-  font-size: 24px;
+  font-size: 28px;
+}
+
+.load:hover, .delete:hover {
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: #f1f1f1;
 }
 
 .colors-set {
-  width: 70%;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  width: 65%;
   display: flex;
   justify-content: space-between;
 }
 
 .load-swatch {
+  border: 1px solid #a1a1a1;
   height: 20px;
   width: 20px;
-  margin: 5px;
+  margin: 3px;
 }
 
 .btn {

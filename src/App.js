@@ -25,6 +25,7 @@ function App () {
   
   /*localStorage.removeItem('preset-count');
   localStorage.removeItem('presets');*/
+  /*localStorage.setItem('preset-count', 4);*/
 
   if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', 0);
   if (localStorage.getItem('presets') === null) localStorage.setItem('presets', null);
@@ -36,7 +37,8 @@ function App () {
   let [secondary, setSecondary] = useState(initSecondary);
   let [name, setName] = useState(initName);
   let [linework, setLinework] = useState(initLinework);
-  let [isOpen, setIsOpen] = useState(false);
+  let [isSaveOpen, setIsSaveOpen] = useState(false);
+  let [isManageOpen, setIsManageOpen] = useState(false);
 
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
   const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
@@ -234,18 +236,18 @@ function App () {
           <label className="save-btn">Save</label>
       </div>*/}
       <button className="randomize" onClick={randomize}>Randomize</button>
-      <button className="open-modal" onClick={() => setIsOpen(true)}>Save Colors</button>
-      {isOpen && <SaveModal 
+      <button className="open-modal" onClick={() => setIsSaveOpen(true)}>Save Colors</button>
+      {isSaveOpen && <SaveModal 
         brd={board}
         pri={primary}
         sl={seal}
         sec={secondary}
         nm={name}
         lnwk={linework}
-        setIsOpen={setIsOpen} />}
-      <button className="open-modal" onClick={() => setIsOpen(true)}>Presets</button>
-      {isOpen && <ManageModal 
-        setIsOpen={setIsOpen} />}
+        setIsOpen={setIsSaveOpen} />}
+      <button className="open-modal" onClick={() => setIsManageOpen(true)}>Presets</button>
+      {isManageOpen && <ManageModal 
+        setIsOpen={setIsManageOpen} />}
       <button className="reset" onClick={reset}>Reset</button>
       
       </div>
