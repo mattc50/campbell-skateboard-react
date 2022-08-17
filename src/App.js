@@ -44,11 +44,9 @@ function App () {
   const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
   const elementColors = ['#adcdd8', '#f8371e', '#a8c8d5', '#518824', '#fefeca', '#010101']
   
-  /*useEffect(() => {
-    localStorage.setItem('board-color', JSON.stringify(board));
-  }, [board]);
+  useEffect(() => {}, [isManageOpen]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const board = JSON.parse(localStorage.getItem('board-color'));
     if (board) {
     setBoard(board);
@@ -187,7 +185,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Primary</label>
-            <p className="hex">{primary}</p> 
+            <p id="hex-primary" className="hex">{primary}</p> 
           </div>
           <input id="color-primary" className="color" type="color" value={primary} onChange={handlePrimary}></input>
           
@@ -195,7 +193,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Secondary</label>
-            <p className="hex">{secondary}</p>
+            <p id="hex-secondary" className="hex">{secondary}</p>
           </div>
           <input id="color-secondary" className="color" type="color" value={secondary} onChange={handleSecondary}></input>
          
@@ -203,7 +201,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Name</label>
-            <p className="hex">{name}</p>
+            <p id="hex-name" className="hex">{name}</p>
           </div>
           <input id="color-name" className="color" type="color" value={name} onChange={handleName}></input>
           
@@ -211,7 +209,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Seal</label>
-            <p className="hex">{seal}</p>
+            <p id="hex-seal" className="hex">{seal}</p>
           </div>
           <input id="color-seal" className="color" type="color" value={seal} onChange={handleSeal}></input>
           
@@ -219,7 +217,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Linework</label>
-            <p className="hex">{linework}</p>
+            <p id="hex-linework" className="hex">{linework}</p>
           </div>
           <input id="color-linework" className="color" type="color" value={linework} onChange={handleLinework}></input>
           
@@ -227,7 +225,7 @@ function App () {
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Board</label>
-            <p className="hex">{board}</p>
+            <p id="hex-board" className="hex">{board}</p>
           </div>
           <input id="color-board" className="color" type="color" value={board} onChange={handleBoard}></input>
           
@@ -247,6 +245,12 @@ function App () {
         setIsOpen={setIsSaveOpen} />}
       <button className="open-modal" onClick={() => setIsManageOpen(true)}>Presets</button>
       {isManageOpen && <ManageModal 
+        sBrd={setBoard}
+        sPri={setPrimary}
+        sSl={setSeal}
+        sSec={setSecondary}
+        sNm={setName}
+        sLnwk={setLinework}
         setIsOpen={setIsManageOpen} />}
       {/*<button className="reset" onClick={reset}>Reset</button>*/}
       

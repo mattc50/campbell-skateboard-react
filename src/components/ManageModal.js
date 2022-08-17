@@ -4,7 +4,7 @@ import { RiCloseLine, RiFileUploadFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const ManageModal = ({ setIsOpen }) => {
+const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, setIsOpen }) => {
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
   const localJSON = JSON.parse(localStorage.getItem('presets'));
   let keysArray = [];
@@ -13,11 +13,10 @@ const ManageModal = ({ setIsOpen }) => {
       keysArray.push(key);
     }
   }
-  let [keySize, setKeySize] = useState(keysArray.length);
 
-  /*useEffect(() => {
-    // This code only fires on length change
-  }, [keysArray.length]);*/
+  // used just to update state; fixes bug where last item 
+  // remaining in list doesn't delete
+  let [keySize, setKeySize] = useState(0);
 
 
 
@@ -28,9 +27,15 @@ const ManageModal = ({ setIsOpen }) => {
     let sl = localJSON[chosenPreset]['seal-color'];
     let lnwk = localJSON[chosenPreset]['linework-color'];
     let brd = localJSON[chosenPreset]['board-color'];
+
     let colorArray = [brd, pri, sl, sec, nm, lnwk];
+    let setArray = [sBrd, sPri, sSl, sSec, sNm, sLnwk];
+
     for (let i = 0; i < colorArray.length; i++) {
       changeStyles (elementSections[i], colorArray[i])
+      setArray[i](colorArray[i]);
+      let keyName = elementSections[i] + '-color';
+      localStorage.setItem(keyName, colorArray[i]);
     }
     setIsOpen(false);
   }
@@ -67,13 +72,13 @@ const ManageModal = ({ setIsOpen }) => {
         <div className={"centered"}>
           <div className={"modal"}>
             <div className={"modal-header"}>
-              <h5 className={"heading"}>Save Colors</h5>
+              <h5 className={"heading"}>Presets</h5>
             </div>
             <button className={"close-btn"} onClick={() => setIsOpen(false)}>
               <RiCloseLine />
             </button>
             <div className={"modal-content"}>
-              Load some colors!
+              Load or Delete any shown presets!
             </div>
             <div className="presets">
               {renderPresets(keysArray)};
