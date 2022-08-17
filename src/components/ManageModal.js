@@ -44,6 +44,9 @@ const ManageModal = ({ setIsOpen }) => {
     localStorage.setItem('presets', stringifyNew);
     localStorage.setItem('preset-count', subCount);
     setKeySize(keySize - 1);
+    if (localStorage.getItem('presets') == "{}") {
+      localStorage.setItem("presets" , null)
+    }
   }
 
   function changeStyles (cls, color) {
