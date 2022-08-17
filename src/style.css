@@ -2,12 +2,6 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/**,
-*:before,
-*:after {
-  box-sizing: border-box;
-}*/
-
 img, svg {
   vertical-align: bottom;
 }
@@ -69,10 +63,6 @@ img, svg {
   overflow: hidden;
 }
 
-/*svg {
-  width: 755px;
-}*/
-
 .container {
     position: absolute;
     width: 755px;
@@ -81,25 +71,9 @@ img, svg {
     margin: 0;
 }
 
-/*.can_board, .can {
-    vertical-align: bottom;
-}*/
-
 .can_board {
     mix-blend-mode: multiply;
 }
-
-/*.board{fill:#adcdd8;}
-
-.primary{fill:#f8371e;}
-
-.seal{fill:#a8c8d5;}
-
-.secondary{fill:#518824;}
-
-.name{fill:#fefeca;}
-
-.linework{fill:#010101;}*/
 
 .label-input-container {
   display: flex;
@@ -180,8 +154,8 @@ label {
 }
 
 .presets {
-  /*display: flex;*/
-  justify-content: center;
+  /*display: flex;
+  justify-content: center;*/
   overflow-y: auto;
 }
 
@@ -244,6 +218,7 @@ label {
 }
 
 button {
+  display: block;
   color: black;
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
@@ -255,7 +230,6 @@ button {
 
 button:hover {
   cursor: pointer;
-  /*background-color: rgb(22, 190, 58);*/
   background-color: rgb(29, 132, 216);
   color: white;
   transition: 0.2s;
