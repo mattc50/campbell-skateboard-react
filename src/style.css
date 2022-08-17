@@ -180,10 +180,13 @@ label {
 }
 
 .presets {
+  display: flex;
+  justify-content: center;
   overflow-y: auto;
 }
 
 .preset-container {
+  width: 100%;
   padding-bottom: 4px;
   border-bottom: 1px solid #e1e1e1;
 }
@@ -201,9 +204,9 @@ label {
 .load, .delete {
   padding: 6px 8px;
   border-radius: 22px;
-  margin: 0 4px;
+  margin: 0;
   color: #616161;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .load:hover, .delete:hover {
@@ -213,18 +216,18 @@ label {
 }
 
 .colors-set {
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
-  background-color: #f1f1f1;
-  width: 65%;
+  /*background-color: #f1f1f1;*/
+  width: 57%;
   display: flex;
   justify-content: space-between;
 }
 
 .load-swatch {
   border: 1px solid #a1a1a1;
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   margin: 3px;
 }
 
@@ -268,3 +271,21 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 700px) {
+  .preset-container {
+    width: 100%;
+  }
+
+  .colors-set {
+    padding: 8px 8px 8px 0;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .label-input {
+    width: 80px;
+  }
+}
+

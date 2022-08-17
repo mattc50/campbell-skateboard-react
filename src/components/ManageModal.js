@@ -8,8 +8,10 @@ const ManageModal = ({ setIsOpen }) => {
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
   const localJSON = JSON.parse(localStorage.getItem('presets'));
   let keysArray = [];
-  for (var key of Object.keys(localJSON)) {
-    keysArray.push(key);
+  if(localJSON != null) {
+    for (var key of Object.keys(localJSON)) {
+      keysArray.push(key);
+    }
   }
   let [keySize, setKeySize] = useState(keysArray.length);
 
@@ -52,6 +54,10 @@ const ManageModal = ({ setIsOpen }) => {
     });
   }
 
+  function renderPresets (keysArray) {
+    if(keysArray.length == 0) return <p className="no-presets">You have no presets.</p>
+  }
+
   return (
       <>
         <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -67,31 +73,32 @@ const ManageModal = ({ setIsOpen }) => {
               Load some colors!
             </div>
             <div className="presets">
-            {keysArray.map((key, index) => {
-              return (
-                <li className="preset-container" key={index}>
-                  <p className="preset-title">{localJSON[key].name}</p>
-                  <div className="preset-body">
-                    <div className="colors-set">
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['primary-color']}}></div>
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['secondary-color']}}></div>
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['name-color']}}></div>
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['seal-color']}}></div>
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['linework-color']}}></div>
-                      <div className="load-swatch" style={{backgroundColor: localJSON[key]['board-color']}}></div>
-                    </div>
-                    <div className="icon-container">
-                      <div className="load" onClick={() => loadPreset(key)}>
-                        <RiFileUploadFill />
+              {renderPresets(keysArray)};
+              {keysArray.map((key, index) => {
+                return (
+                  <li className="preset-container" key={index}>
+                    <p className="preset-title">{localJSON[key].name}</p>
+                    <div className="preset-body">
+                      <div className="colors-set">
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['primary-color']}}></div>
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['secondary-color']}}></div>
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['name-color']}}></div>
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['seal-color']}}></div>
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['linework-color']}}></div>
+                        <div className="load-swatch" style={{backgroundColor: localJSON[key]['board-color']}}></div>
                       </div>
-                      <div className="delete" onClick={() => deletePreset(key, keySize)}>
-                        <FaTrash />
+                      <div className="icon-container">
+                        <div className="load" onClick={() => loadPreset(key)}>
+                          <RiFileUploadFill />
+                        </div>
+                        <div className="delete" onClick={() => deletePreset(key, keySize)}>
+                          <FaTrash />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              );
-            })}
+                  </li>
+                );
+              })}
             {/*document.querySelectorAll(".load").forEach(el => el.addEventListener("click", loadPreset(key)))*/};
           </div>
         </div>
