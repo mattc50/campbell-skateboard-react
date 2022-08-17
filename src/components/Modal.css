@@ -127,6 +127,8 @@
   }*/
 
   .save-form-btn {
+    background-color: buttonface;
+    font-weight: 400;
     width: 100px;
   }
   

@@ -3,6 +3,11 @@ html {
   height: 100vh;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
 img, svg {
   vertical-align: bottom;
 }
@@ -105,6 +110,7 @@ p {
 
 .color {
   cursor: pointer;
+  padding: 0;
   height: 50px;
   width: 50px;
   border: 1px solid buttonface;
@@ -112,7 +118,8 @@ p {
   border-radius: 4px;
 }
 
-.color:focus, .color:active {
+.color:focus, .color:active, .color:hover {
+  opacity: 0.8;
   background-color: buttonface;
 }
 
