@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Modal.module.css";
+import styles from "./Modal.css";
 import { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -55,16 +55,16 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
 
   return (
       <>
-        <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
-        <div className={styles.centered}>
-          <div className={styles.modal}>
-            <div className={styles.modalHeader}>
-              <h5 className={styles.heading}>Save Colors</h5>
+       <div className="dark-bg" onClick={() => setIsOpen(false)} />
+        <div className={"centered"}>
+          <div className={"modal"}>
+            <div className={"modal-header"}>
+              <h5 className={"heading"}>Save Colors</h5>
             </div>
-            <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+            <button className={"close-btn"} onClick={() => setIsOpen(false)}>
               <RiCloseLine />
             </button>
-            <div className={styles.modalContent}>
+            <div className={"modal-content"}>
               Name and save your board!
             </div>
             <form className="save-form">
@@ -105,13 +105,13 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
                   <div className="swatch-face" style={{backgroundColor: brd}}></div>
                 </div>
               </div>
-              <div className={styles.modalActions}>
-                <div className={styles.actionsContainer}>
-                  <button type="button" className={styles.saveFormBtn}
+              <div className={"modal-actions"}>
+                <div className={"actions-container"}>
+                  <button type="button" className={"save-form-btn"}
                     onClick={() => setIsOpen(false)}>
                     Cancel
                   </button>
-                  <button type="submit" className={styles.saveFormBtn} 
+                  <button type="submit" className={"save-form-btn"} 
                     onClick={handleSubmit}>
                     Save
                   </button>

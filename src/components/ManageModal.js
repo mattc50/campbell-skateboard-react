@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Modal.module.css";
+import styles from "./Modal.css";
 import { RiCloseLine, RiFileUploadFill } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
@@ -60,16 +60,16 @@ const ManageModal = ({ setIsOpen }) => {
 
   return (
       <>
-        <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
-        <div className={styles.centered}>
-          <div className={styles.modal}>
-            <div className={styles.modalHeader}>
-              <h5 className={styles.heading}>Save Colors</h5>
+        <div className="dark-bg" onClick={() => setIsOpen(false)} />
+        <div className={"centered"}>
+          <div className={"modal"}>
+            <div className={"modal-header"}>
+              <h5 className={"heading"}>Save Colors</h5>
             </div>
-            <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+            <button className={"close-btn"} onClick={() => setIsOpen(false)}>
               <RiCloseLine />
             </button>
-            <div className={styles.modalContent}>
+            <div className={"modal-content"}>
               Load some colors!
             </div>
             <div className="presets">

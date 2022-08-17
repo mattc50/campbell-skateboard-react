@@ -1,4 +1,4 @@
-.darkBG {
+.dark-bg {
     background-color: rgba(0, 0, 0, 0.2);
     width: 100vw;
     height: 100vh;
@@ -27,7 +27,7 @@
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   }
   
-  .modalHeader {
+  .modal-header {
     height: 50px;
     background: white;
     overflow: hidden;
@@ -44,14 +44,14 @@
     /*text-align: center;*/
   }
   
-  .modalContent {
+  .modal-content {
     /*padding: 10px;*/
     font-size: 14px;
     color: #2c3e50;
     /*text-align: center;*/
   }
   
-  .modalActions {
+  .modal-actions {
     /*position: absolute;
     bottom: 2px;*/
     display: block;
@@ -60,13 +60,13 @@
     box-sizing: initial;
   }
   
-  .actionsContainer {
+  .actions-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
   
-  .closeBtn {
+  .close-btn {
     cursor: pointer;
     font-weight: 500;
     height: auto;
@@ -87,7 +87,7 @@
     margin-right: -3px;*/
   }
   
-  .closeBtn:hover {
+  .close-btn:hover {
     background-color: white;
     color: grey;
     /*box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
@@ -126,11 +126,11 @@
     transition: all 0.25s ease;
   }*/
 
-  .saveFormBtn {
+  .save-form-btn {
     width: 100px;
   }
   
-  .cancelBtn:hover {
+  .cancel-btn:hover {
     box-shadow: none;
     transform: none;
     background: whitesmoke;
