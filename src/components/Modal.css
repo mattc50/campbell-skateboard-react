@@ -18,7 +18,7 @@
   
   .modal {
     width: 40vw;
-    height: 40vh;
+    height: auto;
     padding: 16px;
     background: white;
     color: white;
