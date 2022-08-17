@@ -248,7 +248,7 @@ function App () {
       <button className="open-modal" onClick={() => setIsManageOpen(true)}>Presets</button>
       {isManageOpen && <ManageModal 
         setIsOpen={setIsManageOpen} />}
-      <button className="reset" onClick={reset}>Reset</button>
+      {/*<button className="reset" onClick={reset}>Reset</button>*/}
       
       </div>
     </div>
