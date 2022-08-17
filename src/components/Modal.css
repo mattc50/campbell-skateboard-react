@@ -19,12 +19,18 @@
   .modal {
     width: 40vw;
     height: auto;
+    min-height: 392px;
     padding: 16px;
     background: white;
     color: white;
     z-index: 10;
     border-radius: 16px;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .no-presets {
+    padding-top: 45%;
+    text-align: center;
   }
   
   .modal-header {

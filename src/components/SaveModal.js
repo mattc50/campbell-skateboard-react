@@ -9,7 +9,6 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
   function handleInput (e) {
     var val = e.target.value;
     setFormName(val);
-    console.log(val);
   }
   
 
@@ -41,14 +40,10 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
     const stringified = JSON.stringify(preset);
     if(presetCount == 0) {
       localStorage.setItem('presets', stringified);
-      console.log(stringified);
-      console.log(JSON.parse(stringified))
     } else {
       const JSONstring = localStorage.getItem('presets');
       const addToStringified = JSONstring.slice(0, -1) + "," + stringified.slice (1);
       localStorage.setItem('presets', addToStringified);
-      console.log(addToStringified);
-      console.log(JSON.parse(addToStringified))
     }
     localStorage.setItem('preset-count', parseInt(presetCount) + 1);
   }
