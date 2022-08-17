@@ -180,7 +180,7 @@ label {
 }
 
 .presets {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   overflow-y: auto;
 }
