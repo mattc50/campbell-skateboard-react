@@ -80,8 +80,8 @@
     transition: all 0.25s ease;
     /*box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);*/
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right: 2%;
+    top: 2%;
     align-self: flex-end;
     /*margin-top: -9px;
     margin-right: -3px;*/
