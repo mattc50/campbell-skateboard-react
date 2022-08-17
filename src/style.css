@@ -3,10 +3,10 @@ html {
   height: 100vh;
 }
 
-body {
+/*body {
   height: 100vh;
   overflow: hidden;
-}
+}*/
 
 img, svg {
   vertical-align: bottom;
@@ -165,6 +165,7 @@ label {
 }
 
 .presets {
+  max-height: 300px;
   /*display: flex;
   justify-content: center;*/
   overflow-y: auto;
@@ -173,6 +174,7 @@ label {
 .preset-container {
   width: 100%;
   padding-bottom: 4px;
+  margin-bottom: 4px;
   border-bottom: 1px solid #e1e1e1;
 }
 
