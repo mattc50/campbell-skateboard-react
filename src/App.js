@@ -185,6 +185,8 @@ function App () {
         sec={secondary}
         nm={name}
         lnwk={linework}
+        isOtherOpen = {isManageOpen}
+        setIsOtherOpen = {setIsManageOpen}
         setIsOpen={setIsSaveOpen} />}
       <button className="open-modal" onClick={() => setIsManageOpen(true)}>Presets</button>
       {isManageOpen && <ManageModal 
@@ -194,6 +196,8 @@ function App () {
         sSec={setSecondary}
         sNm={setName}
         sLnwk={setLinework}
+        isOtherOpen = {isSaveOpen}
+        setIsOtherOpen = {setIsSaveOpen}
         setIsOpen={setIsManageOpen} />}
       </div>
     </div>

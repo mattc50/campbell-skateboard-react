@@ -3,7 +3,11 @@ import "./Modal.css";
 import { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
-const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
+const SaveModal = ({ brd, pri, sl, sec, nm, lnwk, isOtherOpen, setIsOtherOpen, setIsOpen }) => {
+  if(isOtherOpen === true) {
+    setIsOtherOpen(false);
+  }
+  
   let [formName, setFormName] = useState('');
 
   const localJSON = JSON.parse(localStorage.getItem('presets'));

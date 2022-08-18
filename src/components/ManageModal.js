@@ -4,7 +4,11 @@ import { RiCloseLine, RiFileUploadFill } from "react-icons/ri";
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, setIsOpen }) => {
+const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, isOtherOpen, setIsOtherOpen, setIsOpen }) => {
+  if(isOtherOpen === true) {
+    setIsOtherOpen(false);
+  }
+  
   const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
   const localJSON = JSON.parse(localStorage.getItem('presets'));
   let keysArray = [];
@@ -96,12 +100,12 @@ const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, setIsOpen }) => {
                         <div className="load-swatch" style={{backgroundColor: localJSON[key]['board-color']}}></div>
                       </div>
                       <div className="icon-container">
-                        <div className="load" onClick={() => loadPreset(key)}>
+                        <button className="load" onClick={() => loadPreset(key)}>
                           <RiFileUploadFill />
-                        </div>
-                        <div className="delete" onClick={() => deletePreset(key, keySize)}>
+                        </button>
+                        <button className="delete" onClick={() => deletePreset(key, keySize)}>
                           <FaTrash />
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </li>

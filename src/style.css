@@ -189,17 +189,21 @@ label {
 }
 
 .load, .delete {
-  padding: 6px 8px;
+  padding: 4px 8px 8px 8px;
   border-radius: 22px;
   margin: 0;
+  background-color: transparent;
   color: #616161;
   font-size: 24px;
+  border: none;
 }
 
 .load:hover, .delete:hover {
   transition: 0.2s;
   cursor: pointer;
   background-color: #f1f1f1;
+  color: #616161;
+
 }
 
 .colors-set {
