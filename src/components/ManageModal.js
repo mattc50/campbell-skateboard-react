@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Modal.css";
+import "./Modal.css";
 import { RiCloseLine, RiFileUploadFill } from "react-icons/ri";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
 const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, setIsOpen }) => {
@@ -63,7 +63,7 @@ const ManageModal = ({ sBrd, sPri, sSl, sSec, sNm, sLnwk, setIsOpen }) => {
   }
 
   function renderPresets (keysArray) {
-    if(keysArray.length == 0) return <p className="no-presets">You have no presets.</p>
+    if(keysArray.length === 0) return <p className="no-presets">You have no presets.</p>
   }
 
   return (

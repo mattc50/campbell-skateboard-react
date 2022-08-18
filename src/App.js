@@ -1,21 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import './style.css';
-//import {SketchPicker} from "react-color";
 import SaveModal from "./components/SaveModal";
 import ManageModal from "./components/ManageModal";
 import { useState, useEffect } from "react";
 import skateboardImg from './images/campbell_skateboard_bg.png'; 
 
-let count = 0;
-
 function App () {
-  /*count++;
-  console.log("rendered" + count);*/
-
-  //const [sketchPickerColor, setSketchPickerColor] = useState("#37d67a");
-  
-
   let initBoard = localStorage.getItem('board-color') === null ? '#adcdd8' : localStorage.getItem('board-color');
   let initPrimary = localStorage.getItem('primary-color') === null ? '#f8371e' : localStorage.getItem('primary-color');
   let initSeal = localStorage.getItem('seal-color') === null ? '#a8c8d5' : localStorage.getItem('seal-color');
@@ -25,7 +15,6 @@ function App () {
   
   /*localStorage.removeItem('preset-count');
   localStorage.removeItem('presets');*/
-  /*localStorage.setItem('preset-count', 4);*/
 
   if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', 0);
   if (localStorage.getItem('presets') === null) localStorage.setItem('presets', null);
@@ -39,19 +28,8 @@ function App () {
   let [linework, setLinework] = useState(initLinework);
   let [isSaveOpen, setIsSaveOpen] = useState(false);
   let [isManageOpen, setIsManageOpen] = useState(false);
-
-  const elementSections = ["board", "primary", "seal", "secondary", "name", "linework"];
-  const defaults = ['board-color', 'primary-color', 'seal-color', 'secondary-color', 'name-color', 'linework-color']
-  const elementColors = ['#adcdd8', '#f8371e', '#a8c8d5', '#518824', '#fefeca', '#010101']
   
   useEffect(() => {}, [isManageOpen]);
-
-  /*useEffect(() => {
-    const board = JSON.parse(localStorage.getItem('board-color'));
-    if (board) {
-    setBoard(board);
-    }
-  }, []);*/
 
   function randomize() {
     let newColors = [];
@@ -81,24 +59,6 @@ function App () {
     });
     localStorage.setItem(storage, val);
   }
-
-  function reset () {
-    setBoard('#adcdd8');
-    setPrimary('#f8371e');
-    setSeal('#a8c8d5');
-    setSecondary('#518824');
-    setName('#fefeca');
-    setLinework('#010101');
-    for(let i = 0; i < elementSections.length; i++) {
-      let clsName = "." + elementSections[i];
-      let els = document.querySelectorAll(clsName);
-      localStorage.setItem(defaults[i], elementColors[i]);
-      els.forEach(el => {
-        el.style.fill = elementColors[i];
-      });
-    } 
-    //window.location.reload(false);
-  };
 
   function handleBoard(e) {
     let thisValue = e.target.value;
@@ -168,20 +128,6 @@ function App () {
 
     <div className="color-container">
       <div className="color-inputs">
-        {/*<div
-          style={{
-            backgroundColor: `${sketchPickerColor}`,
-            width: 100,
-            height: 50,
-            border: "2px solid white",
-          }}
-        ></div>*/}
-        {/*<SketchPicker
-          color={sketchPickerColor}
-          onChange={(color) => {
-            changeColor('.board', setSketchPickerColor(color.hex));
-          }}
-        />*/}
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Primary</label>
@@ -230,9 +176,6 @@ function App () {
           <input id="color-board" className="color" type="color" value={board} onChange={handleBoard}></input>
           
         </div>
-        {/*<div className="save-btn-container" onclick="screenshot()">
-          <label className="save-btn">Save</label>
-      </div>*/}
       <button className="randomize" onClick={randomize}>Randomize</button>
       <button className="open-modal" onClick={() => setIsSaveOpen(true)}>Save Colors</button>
       {isSaveOpen && <SaveModal 
@@ -252,11 +195,8 @@ function App () {
         sNm={setName}
         sLnwk={setLinework}
         setIsOpen={setIsManageOpen} />}
-      {/*<button className="reset" onClick={reset}>Reset</button>*/}
-      
       </div>
     </div>
-
   </div>
   );
 }

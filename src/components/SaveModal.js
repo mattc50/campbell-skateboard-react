@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Modal.css";
+import "./Modal.css";
 import { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -12,7 +12,6 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
     var val = e.target.value;
     setFormName(val);
   }
-  
 
   function handleSubmit (e) {
     e.preventDefault();
@@ -22,17 +21,16 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
   function nameLogic (presetCount) {
     // check if key exists
     let presetName = 'preset' + presetCount;
-    if (localJSON != null && Object.keys(localJSON).indexOf(presetName) != -1) {
+    if (localJSON !== null && Object.keys(localJSON).indexOf(presetName) !== -1) {
       //if key doesn't exist, change presetCount
       //const maintainCount = presetCount; // maintain presetCount for future reference
       let decCount = presetCount; // modifiable copies of presetCount
       let incCount = presetCount;
-      console.log(decCount);
       //decrement presetCount (decCount) until decCount is less than 0 or the key is empty
       let emptyKey = false;
-      while (decCount >= 0 || emptyKey == false) {
+      while (decCount >= 0 || emptyKey === false) {
         let tempPresetName = 'preset' + decCount;
-        if (Object.keys(localJSON).indexOf(tempPresetName) == -1) {
+        if (Object.keys(localJSON).indexOf(tempPresetName) === -1) {
           emptyKey = true;
           return decCount;
         }
@@ -42,10 +40,10 @@ const SaveModal = ({ setIsOpen, brd, pri, sl, sec, nm, lnwk }) => {
 
       // if decCount <=0, increment presetCount (incCount) until an empty key is found 
       if (decCount <= 0) {
-        while (emptyKey == false) {
+        while (emptyKey === false) {
           incCount ++;
           let tempPresetName = 'preset' + incCount;
-          if (Object.keys(localJSON).indexOf(tempPresetName) == -1) {
+          if (Object.keys(localJSON).indexOf(tempPresetName) === -1) {
             emptyKey = true;
           }
         }
