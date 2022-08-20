@@ -6,20 +6,22 @@ import { useState, useEffect } from "react";
 import skateboardImg from './images/campbell_skateboard_bg.png'; 
 
 function App () {
+  //  initialize skateboard colors.
+  //  if there is no color stored in local storage, set the color to the indicated default.
+  //  if there is a color stored in local storage, set the color to that stored color.
   let initBoard = localStorage.getItem('board-color') === null ? '#adcdd8' : localStorage.getItem('board-color');
   let initPrimary = localStorage.getItem('primary-color') === null ? '#f8371e' : localStorage.getItem('primary-color');
   let initSeal = localStorage.getItem('seal-color') === null ? '#a8c8d5' : localStorage.getItem('seal-color');
   let initSecondary = localStorage.getItem('secondary-color') === null ? '#518824' : localStorage.getItem('secondary-color');
   let initName = localStorage.getItem('name-color') === null ? '#fefeca' : localStorage.getItem('name-color');
   let initLinework = localStorage.getItem('linework-color') === null ? '#010101' : localStorage.getItem('linework-color');
-  
-  /*localStorage.removeItem('preset-count');
-  localStorage.removeItem('presets');*/
 
+  //  if the value of preset-count in local storage is null (no preset-count key) set a preset-count key with a value of 0.
   if (localStorage.getItem('preset-count') === null) localStorage.setItem('preset-count', 0);
+  //  if the value of presets in local storage is null (no presets key) set a preset-count key with value of null.
   if (localStorage.getItem('presets') === null) localStorage.setItem('presets', null);
 
-  
+  //  set initial states for skateboard color variables and Modal open/close.
   let [board, setBoard] = useState(initBoard);
   let [primary, setPrimary] = useState(initPrimary);
   let [seal, setSeal] = useState(initSeal);
@@ -29,14 +31,22 @@ function App () {
   let [isSaveOpen, setIsSaveOpen] = useState(false);
   let [isManageOpen, setIsManageOpen] = useState(false);
   
+  //  re-renders page when isManageOpen changes state
+  //  (used when the user wants to load a color, re-rendering the page to display the colors they have chosen.)
   useEffect(() => {}, [isManageOpen]);
 
+  //  randomizes the skateboard colors.
   function randomize() {
+    //  initialize an array to store the new colors to be assigned to the skateboard.
     let newColors = [];
     for(let i = 0; i < 6; i++) {
+      //  make a string of a hex-value.
       const randomColor = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+      //  add the hex-value to the array of new colors.
       newColors.push(randomColor);
     }
+
+    //  set each skateboard color to the color stored in each index of the new color array.
     setBoard(newColors[0]);
     localStorage.setItem('board-color', newColors[0]);
     setPrimary(newColors[1]);
@@ -51,45 +61,59 @@ function App () {
     localStorage.setItem('linework-color', newColors[5]);
   }
 
+  //  change the styles when the value (color) of the color input is changed.
+  //  takes in:
+  //  -- a class name: selects all SVG paths of the skateboard color section,
+  //  -- a value :the value of the color input (a hex-value), found from passing the change event (onChange) to the handler function 
+  //     and reading the value of the input element where the event took place, 
+  //  -- a storage name: the key in local storage where the input value (hex-value; value parameter) will be associated with.
   function changeStyles(cls, val, storage) {
+    //  prepend a . to the class name to be used in the query search.
     const clsName = "." + cls;
+    //  store all the elements found from the query search of the class name (stores as a NodeList; can be traversed by a for-each loop).
     const els = document.querySelectorAll(clsName);
+    //  for each element (path) found, change its fill style to the hex-value (val) passed to the changeStyles function.
     els.forEach(el => {
       el.style.fill = val;
     });
+    //  set the passed local storage key (storage) to the value of the passed hex-value (val).
     localStorage.setItem(storage, val);
   }
 
+  //  handler functions; called each time the value of each skateboard color section's input changes (a new color is selected).
+  //  --  stores the hex-value (value) of the changed input (e.target) in a thisValue variable,
+  //  --  sets the skateboard color section to the color corresponding to that value,
+  //  --  calls the changeStyles function to change all SVG paths of that skateboard color section to the value and store them locally.
   function handleBoard(e) {
     let thisValue = e.target.value;
     setBoard(thisValue);
     changeStyles("board", thisValue, 'board-color');
   }
-
+  
   function handlePrimary(e) {
     let thisValue = e.target.value;
     setPrimary(thisValue);
     changeStyles("primary", thisValue, 'primary-color');
   }
-
+  
   function handleSeal(e) {
     let thisValue = e.target.value;
     setSeal(thisValue);
     changeStyles("seal", thisValue, 'seal-color');
   }
-
+  
   function handleSecondary(e) {
     let thisValue = e.target.value;
     setSecondary(thisValue);
     changeStyles("secondary", thisValue, 'secondary-color');
   }
-
+  
   function handleName(e) {
     let thisValue = e.target.value;
     setName(thisValue);
     changeStyles("name", thisValue, 'name-color');
   }
-
+  
   function handleLinework(e) {
     let thisValue = e.target.value;
     setLinework(thisValue);
@@ -97,11 +121,17 @@ function App () {
   }
 
   return (
-    
   <div className="content">
+    {/* 
+    container to crop the skateboard SVGs, keeping the div thin compared to the actual SVG size.
+    */}
     <div className="crop-container">
+
+      {/* 
+      container for the skateboard. 
+      all skateboard SVGs are contained in the editable div, which are ordered to render each subsequent layer on top of the previous one.
+      */}
       <div className="board-display">
-          
         <img id="background-image" src={skateboardImg} alt=""/>
           <div className="editable">
             <div className="container">
@@ -128,55 +158,77 @@ function App () {
 
     <div className="color-container">
       <div className="color-inputs">
+        {/*
+        color input containers.
+        has a:
+        --  label: fixed; identifies which skateboard color section the input corresponds to,
+        --  p: displays the hex-value of the skateboard color section, which changes depending on which hex-value is stored for that section,
+        --  input: displays a color input which the user can use to select a color.
+            when the color (value of the input) is changed, the handler function for that section is called to change it on the skateboard.
+        */}
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Primary</label>
             <p id="hex-primary" className="hex">{primary}</p> 
           </div>
           <input id="color-primary" className="color" type="color" value={primary} onChange={handlePrimary}></input>
-          
         </div>
+        
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Secondary</label>
             <p id="hex-secondary" className="hex">{secondary}</p>
           </div>
           <input id="color-secondary" className="color" type="color" value={secondary} onChange={handleSecondary}></input>
-         
         </div>
+        
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Name</label>
             <p id="hex-name" className="hex">{name}</p>
           </div>
           <input id="color-name" className="color" type="color" value={name} onChange={handleName}></input>
-          
         </div>
+        
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Seal</label>
             <p id="hex-seal" className="hex">{seal}</p>
           </div>
           <input id="color-seal" className="color" type="color" value={seal} onChange={handleSeal}></input>
-          
         </div>
+        
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Linework</label>
             <p id="hex-linework" className="hex">{linework}</p>
           </div>
           <input id="color-linework" className="color" type="color" value={linework} onChange={handleLinework}></input>
-          
         </div>
+        
         <div className="label-input-container">
           <div className="label-input">
             <label className="color-label">Board</label>
             <p id="hex-board" className="hex">{board}</p>
           </div>
           <input id="color-board" className="color" type="color" value={board} onChange={handleBoard}></input>
-          
         </div>
+      
+      {/* 
+      randomize button.
+      when clicked, calls the randomize function to assign random colors to the skateboard. 
+      */}
       <button className="randomize" onClick={randomize}>Randomize</button>
+      {/*
+      "save colors" button.
+      when clicked, sets the isSaveOpen value to true.
+      will only render the "save colors" Modal if isSaveOpen is true, which is set to be so when clicked.
+      this Modal receives the following props:
+      --  brd, pri, sl, sec, nm, lnwk: colors stored in respective skateboard color section variables.
+      --  isOtherOpen: boolean value that reflects whether the "presets" Modal is visible (true) or not (false).
+      --  setIsOtherOpen: function to change the value of isOtherOpen.
+      --  setIsOpen: function to change the value of isSaveOpen; if true, "save colors" Modal is visible; if false, it is not visible.
+      */}
       <button className="open-modal" onClick={() => setIsSaveOpen(true)}>Save Colors</button>
       {isSaveOpen && <SaveModal 
         brd={board}
@@ -188,6 +240,17 @@ function App () {
         isOtherOpen = {isManageOpen}
         setIsOtherOpen = {setIsManageOpen}
         setIsOpen={setIsSaveOpen} />}
+      
+      {/*
+      "presets" button.
+      when clicked, sets the isManageOpen value to true.
+      will only render the "presets" Modal if isManageOpen is true, which is set to be so when clicked.
+      this Modal receives the following props:
+      --  sBrd, sPri, sSl, sSec, sNm, sLnwk: functions to change colors of their respective skateboard color sections.
+      --  isOtherOpen: boolean value that reflects whether the "save colors" Modal is visible (true) or not (false).
+      --  setIsOtherOpen: function to change the value of isOtherOpen.
+      --  setIsOpen: function to change the value of isManageOpen; if true, "presets" Modal is visible; if false, it is not visible.
+      */}
       <button className="open-modal" onClick={() => setIsManageOpen(true)}>Presets</button>
       {isManageOpen && <ManageModal 
         sBrd={setBoard}
